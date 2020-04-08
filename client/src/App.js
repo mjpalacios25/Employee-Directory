@@ -1,17 +1,26 @@
 import React from 'react';
-//import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/NavBar";
-import {EmplyeeCard, CardItem} from "./components/EmployeeCard"
+import Main from "./pages/Main";
+import EmployeeInfo from "./pages/EmployeeInfo";
+
 
 
 function App() {
   return (
     <div >
      <Nav />
-     <EmplyeeCard>
-       <CardItem>Thing One</CardItem>
-       <CardItem>Thing Two</CardItem>
-     </EmplyeeCard>
+     <Router>
+       <Switch>
+         <Route exact path = {["/", "/Main"]}>
+           <Main />
+         </Route>
+         <Route exact path = {"/Employee/:id"}>
+           <EmployeeInfo />
+         </Route>
+       </Switch>
+     </Router>
+     
     </div>
   );
 }
