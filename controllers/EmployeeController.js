@@ -13,10 +13,16 @@ module.exports = {
         .then(dbEmployee => res.json(dbEmployee))
         .catch(err => res.status(422).json(err))
     },
-    create: function(){
+    create: function(req, res){
         db.Employee
         .create(req.body)
         .then(dbEmployee => res.json(dbEmployee))
+        .catch(err => res.status(422).json(err))
+    },
+    remove: function(req, res) {
+        db.Employee
+        .findbyID(req.params.id)
+        .then(dbEmployee => dbEmployee.remove())
         .catch(err => res.status(422).json(err))
     }
 };
