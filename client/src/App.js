@@ -15,7 +15,7 @@ function App() {
          <Route exact path = {["/", "/Main"]}>
            <Main />
          </Route>
-         <Route exact path = {"/Employee/:id"}>
+         <Route exact path = {"/employee/:id"}>
            <EmployeeInfo />
          </Route>
        </Switch>
