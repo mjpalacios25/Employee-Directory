@@ -8,3 +8,5 @@ router.route("/")
 router.route("/:id")
     .get(employeeController.findbyID)
     .delete(employeeController.remove)
+
+module.exports = router;

@@ -2,14 +2,15 @@ import axios from "axios";
 
 export default {
     getEmployees: function() {
-        axios.get("/api/employee")
+        return axios.get("/api/employees")
     },
 
     getEmployee: function(id) {
-        axios.get("/api/employee/" + id)
+        return axios.get("/api/employees/" + id)
     },
 
-    deleteEmployee: function() {
-        axios.delete()
-    }
+    deleteEmployee: function(id) {
+        return axios.delete("/api/employees/" + id)
+    },
+
 }
