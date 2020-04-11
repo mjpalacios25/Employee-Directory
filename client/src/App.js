@@ -10,6 +10,7 @@ function App() {
   return (
     <div >
      <Nav />
+     <hr></hr>
      <Router>
        <Switch>
          <Route exact path = {["/", "/Main"]}>
