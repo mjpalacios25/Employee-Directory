@@ -8,8 +8,8 @@ export function EmplyeeCard({ children }) {
     );
   };
 
-  export function CardItem({ children }) {
-    return <li className="list-group-item">{children}</li>;
-  };
+export function CardItem({ children }) {
+  return <li className="list-group-item">{children}</li>;
+};
   
   

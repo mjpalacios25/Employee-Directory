@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {EmplyeeCard, CardItem} from "../components/EmployeeCard";
 import {Input} from "../components/Form"
 import {Container, Row, Col} from "../components/Grid";
+import {DeleteBtn} from "../components/DeleteButton"
 import API from "../utils/API"
 
 
@@ -35,7 +36,7 @@ function Main() {
     if(!value){ loadEmployees() }
   };
 
-  function deleteEmployee(id){
+  function deleteEmployees(id){
     API.deleteEmployee(id)
     .then(res => loadEmployees())
     .catch(err => console.log(err));
@@ -65,6 +66,7 @@ function Main() {
                       Name: {employee.name} <br></br> Department: {employee.department} <br></br> Position: {employee.role}
                     </strong>
                   </Link>
+                  <DeleteBtn onClick={() => deleteEmployees(employee._id)} />
                 </CardItem>
               ))}
               
