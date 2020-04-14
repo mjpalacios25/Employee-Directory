@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import {EmplyeeCard, CardItem} from "../components/EmployeeCard";
 import {Input} from "../components/Form"
 import {Container, Row, Col} from "../components/Grid";
-import {DeleteBtn} from "../components/DeleteButton"
+import {DeleteBtn, SortBtn} from "../components/Buttons"
 import {InfoContainer, CardHeader, CardBody} from "../components/InfoContainer"
 import API from "../utils/API"
 import profileImage from "../assets/images/profile.png"
@@ -63,7 +63,28 @@ function Main() {
     
   };
 
-  
+  function sortName() {
+    API.getEmployees()
+      .then(res => {
+        setEmployees(res.data)
+        
+      })
+      .catch(err => console.log(err));
+  };
+
+  function sortDepartment() {
+    API.sortbyDepartment()
+      .then(res => {
+        setEmployees(res.data)
+        
+      })
+      .catch(err => console.log(err));
+  };
+
+  const divStyle = {
+    textDecoration: 'underline',
+    color: `teal`
+  }
   return (
     <div >
     
@@ -79,18 +100,20 @@ function Main() {
                 placeholder="Title (required)"
               />
             </form>
+            <div className="btn-group" role="group">
+              <SortBtn onClick={() => sortName()} >Sort by Name</SortBtn>
+              <SortBtn onClick={() => sortDepartment()}> Sort by Department</SortBtn>
+              
+            </div>
+            
            {employees.length ? (
              <EmplyeeCard>
               {employees.map(employee => (
                 <CardItem key = {employee._id}>
-                  {/* <Link className="text-dark" to= {"/employee/" + employee._id} >
-                    <strong>
-                      Name: {employee.name} <br></br> Department: {employee.department} <br></br> Position: {employee.role}
-                    </strong>
-                  </Link> */}
+                  <a style = {divStyle} href="#" >
                   <strong onClick={() => showInfo(employee._id)}>
-                      Name: {employee.name} <br></br> Department: {employee.department} <br></br> Position: {employee.role}
-                  </strong>
+                      Name: {employee.name} <br></br> Department: {employee.department}
+                  </strong></a>
                   <DeleteBtn onClick={() => deleteEmployees(employee._id)} />
                 </CardItem>
               ))}
@@ -103,7 +126,7 @@ function Main() {
          <Col size= "md-6">
            <InfoContainer >
              <CardHeader>
-               {detail.name ? <h2> Name: {detail.name}  </h2> : <h2> </h2>} 
+               {detail.name ? <h2> {detail.name}  </h2> : <h2> Select an Employee </h2>} 
              </CardHeader>
              <img
               className="center-block mt-3"
@@ -116,7 +139,7 @@ function Main() {
                  <h3>Department: {detail.department} 
                  </h3> <h3>Role: {detail.role} </h3> 
                  <h3>Email: {detail.email} </h3> </div>
-                 : <h3>Select an Employee</h3>} 
+                 : " "} 
                
                
                

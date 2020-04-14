@@ -8,6 +8,13 @@ module.exports = {
         .then(dbEmployee => res.json(dbEmployee))
         .catch(err => res.status(422).json(err))
     },
+    sortbyDept: function(req, res) {
+        db.Employee
+        .find(req.query)
+        .sort({department: 1})
+        .then(dbEmployee => res.json(dbEmployee))
+        .catch(err => res.status(422).json(err))
+    },
     findbyID: function(req, res){
         db.Employee
         .findById(req.params.id)

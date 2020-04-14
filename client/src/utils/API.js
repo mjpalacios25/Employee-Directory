@@ -5,6 +5,10 @@ export default {
         return axios.get("/api/employees")
     },
 
+    sortbyDepartment: function(){
+        return axios.get("/api/employees/sort/department")
+    },
+
     getEmployee: function(id) {
         return axios.get("/api/employees/" + id)
     },
