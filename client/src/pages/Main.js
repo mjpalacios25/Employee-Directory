@@ -4,12 +4,21 @@ import {EmplyeeCard, CardItem} from "../components/EmployeeCard";
 import {Input} from "../components/Form"
 import {Container, Row, Col} from "../components/Grid";
 import {DeleteBtn} from "../components/DeleteButton"
+import {InfoContainer, CardHeader, CardBody} from "../components/InfoContainer"
 import API from "../utils/API"
+import profileImage from "../assets/images/profile.png"
 
 
 function Main() {
 
   const [employees, setEmployees] = useState([]);
+  const [detail, setDetail] = useState({
+    _id: "",
+    name: "",
+    department: "",
+    role: "",
+    email: ""
+  })
   const [formObject, setFormObject] = useState({});
 
   useEffect(() => {
@@ -41,12 +50,25 @@ function Main() {
     .then(res => loadEmployees())
     .catch(err => console.log(err));
   };
+
+  
+  function showInfo(id) {
+    
+    let [highlight] = employees.filter(person => person._id === id );
+    console.log(highlight);
+    const {name, department, role, email} = highlight;
+    console.log(name, department);
+    console.log(detail);
+    setDetail(highlight)
+    
+  };
+
   
   return (
     <div >
-     
+    
      <Container fluid>
-       <Row fluid>
+       <Row>
          
          
          <Col size ="md-6">
@@ -61,11 +83,14 @@ function Main() {
              <EmplyeeCard>
               {employees.map(employee => (
                 <CardItem key = {employee._id}>
-                  <Link className="text-dark" to= {"/employee/" + employee._id}>
+                  {/* <Link className="text-dark" to= {"/employee/" + employee._id} >
                     <strong>
                       Name: {employee.name} <br></br> Department: {employee.department} <br></br> Position: {employee.role}
                     </strong>
-                  </Link>
+                  </Link> */}
+                  <strong onClick={() => showInfo(employee._id)}>
+                      Name: {employee.name} <br></br> Department: {employee.department} <br></br> Position: {employee.role}
+                  </strong>
                   <DeleteBtn onClick={() => deleteEmployees(employee._id)} />
                 </CardItem>
               ))}
@@ -75,8 +100,33 @@ function Main() {
             <h3>No Results to Display</h3>
            ) }
          </Col>
+         <Col size= "md-6">
+           <InfoContainer >
+             <CardHeader>
+               {detail.name ? <h2> Name: {detail.name}  </h2> : <h2> </h2>} 
+             </CardHeader>
+             <img
+              className="center-block mt-3"
+              style={{ width: "200px", margin: "0 auto" }}
+              src={profileImage}
+              alt="profile"/>
+             <CardBody>
+               
+               {detail.name ? <div>  
+                 <h3>Department: {detail.department} 
+                 </h3> <h3>Role: {detail.role} </h3> 
+                 <h3>Email: {detail.email} </h3> </div>
+                 : <h3>Select an Employee</h3>} 
+               
+               
+               
+             </CardBody>
+           </InfoContainer>
+            
+         </Col>
        </Row>
      </Container>
+ 
      
     </div>
   );
