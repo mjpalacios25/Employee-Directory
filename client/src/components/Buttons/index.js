@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom"
 import "./style.css"
 
 export function DeleteBtn(props){
@@ -12,7 +13,9 @@ export function DeleteBtn(props){
 export function SortBtn(props){
   return(
     <button className="sort-btn btn btn-success my-2 text-light " {...props} role="button" tabIndex="0">
-      
+      <Link to = "/AddEmployee" style={{color: "white"}} >
+        {props.children}
+      </Link> 
     </button>
   ) 
 };

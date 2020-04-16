@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, match } from "react-router-dom";
 import {EmplyeeCard, CardItem} from "../components/EmployeeCard";
 import {Input} from "../components/Form"
 import {Container, Row, Col} from "../components/Grid";
@@ -103,7 +103,7 @@ function Main() {
             <div className="btn-group" role="group">
               <SortBtn onClick={() => sortName()} >Sort by Name</SortBtn>
               <SortBtn onClick={() => sortDepartment()}> Sort by Department</SortBtn>
-              <SortBtn onClick={() => window.location.href = "/AddEmployee" } > Add New Employee</SortBtn>
+              <SortBtn > Add New Employee</SortBtn>
               
             </div>
             
