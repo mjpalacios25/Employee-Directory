@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/NavBar";
 import Main from "./pages/Main";
-import EmployeeInfo from "./pages/EmployeeInfo";
+import  AddEmployee from "./pages/AddEmployee";
 
 
 
@@ -10,14 +10,14 @@ function App() {
   return (
     <div >
      <Nav />
-     <hr></hr>
+     <br></br>
      <Router>
        <Switch>
          <Route exact path = {["/", "/Main"]}>
            <Main />
          </Route>
-         <Route exact path = {"/employee/:id"}>
-           <EmployeeInfo />
+         <Route exact path = {["/AddEmployee"]}>
+           <AddEmployee />
          </Route>
        </Switch>
      </Router>

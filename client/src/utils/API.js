@@ -17,4 +17,8 @@ export default {
         return axios.delete("/api/employees/" + id)
     },
 
+    saveEmployee: function(newEmployee) {
+        return axios.post("/api/employees/add/employee", newEmployee)
+    }
+
 }

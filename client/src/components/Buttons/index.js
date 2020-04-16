@@ -11,8 +11,8 @@ export function DeleteBtn(props){
 
 export function SortBtn(props){
   return(
-    <button className="sort-btn btn btn-success" {...props} role="button" tabIndex="0">
-      Sort stuffs
+    <button className="sort-btn btn btn-success my-2 text-light " {...props} role="button" tabIndex="0">
+      
     </button>
   ) 
 };

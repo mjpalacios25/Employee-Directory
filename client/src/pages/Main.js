@@ -19,7 +19,7 @@ function Main() {
     role: "",
     email: ""
   })
-  const [formObject, setFormObject] = useState({});
+  //const [formObject, setFormObject] = useState({});
 
   useEffect(() => {
     loadEmployees()
@@ -97,12 +97,13 @@ function Main() {
               <Input
                 onChange= {handleInputChange}
                 name="title"
-                placeholder="Title (required)"
-              />
+                placeholder="Title (required)" text="Search"
+              /> 
             </form>
             <div className="btn-group" role="group">
               <SortBtn onClick={() => sortName()} >Sort by Name</SortBtn>
               <SortBtn onClick={() => sortDepartment()}> Sort by Department</SortBtn>
+              <SortBtn onClick={() => window.location.href = "/AddEmployee" } > Add New Employee</SortBtn>
               
             </div>
             

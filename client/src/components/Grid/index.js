@@ -21,7 +21,7 @@ export function Col({size, children}) {
     return (
         <div className = {size
                             .split(" ")
-                            .map(size => "col-" + size)
+                            .map(size => "col-" + size + " mx-auto")
                             .join(" ")}>
             {children}
         </div>
