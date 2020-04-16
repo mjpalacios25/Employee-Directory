@@ -103,7 +103,7 @@ function Main() {
             <div className="btn-group" role="group">
               <SortBtn onClick={() => sortName()} >Sort by Name</SortBtn>
               <SortBtn onClick={() => sortDepartment()}> Sort by Department</SortBtn>
-              <SortBtn > Add New Employee</SortBtn>
+              <SortBtn to = "/AddEmployee" > Add New Employee</SortBtn>
               
             </div>
             
